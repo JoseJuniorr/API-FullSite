@@ -9,3 +9,9 @@ Reiniciar o servidor automaticamente, sempre que houver alteração
 
 Produz código JS válido, para import do ES6
 ### npm install -D sucrase
+
+Conexão com o MongoDB
+### npm install --save mongoose
+
+Variáveis de ambiente
+### npm install dotenv
