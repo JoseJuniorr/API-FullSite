@@ -15,3 +15,6 @@ Conexão com o MongoDB
 
 Variáveis de ambiente
 ### npm install dotenv
+
+Lib validação
+### npm install --save yup
