@@ -1,29 +1,46 @@
 // const { Router } = require('express')
 import { Router } from "express";
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
+
 require("dotenv").config();
+
+import User from './app/models/User'
+import UserController from './app/controllers/UserController'
+
 
 const routes = new Router();
 
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@api-fullsite.vs8jf.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
-  .then(() => {
-    console.log("Conexão com o MongoDB Cloud realizada com sucesso!");
-  })
-  .catch((err) => {
-    console.log("Erro ao conectar ao MongoDB Cloud!" + err);
-  });
+routes.post('/users', UserController.store)
 
-routes.get("/", (req, res) => {
-  res.send("rota inicial");
-});
+// routes.get("/", async (req, res) => {
+
+//     await User.create({
+//         nome: 'José Jr',
+//         email: 'jjerrorama@outlook.com',
+//         senha: '123654'
+//     }, function (err, small) {
+//         if (err) return res.status(400).json({ error: "Erro ao cadastrar o usuário!" });
+
+//         return res.status(200).json({ error: "Usuário cadastrado com sucesso!" })
+
+
+
+//     })
+
+
+
+// });
+
+
 
 routes.get("/contato", (req, res) => {
-  res.send("rota contato");
+    res.send("rota contato");
 });
+
+
+
+
+
 
 // module.exports = routes
 export default routes;
