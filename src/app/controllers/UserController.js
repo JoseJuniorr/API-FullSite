@@ -1,4 +1,5 @@
 import * as Yup from 'yup'
+import bcrypt from 'bcrypt'
 import User from '../models/User'
 
 
@@ -58,7 +59,11 @@ class UserController {
         //     })
         // }
 
-        const user = await User.create(req.body, (err) => {
+
+        var dados = req.body;
+        dados.password = await bcrypt.hash(dados.password, 7)
+
+        const user = await User.create(dados, (err) => {
             if (err) return res.status(400).json({
                 error: true,
                 code: 101,
