@@ -36,30 +36,6 @@ class UserController {
 
 
 
-        // if (!req.body.name || typeof req.body.name == undefined || req.body.name == null) {
-        //     return res.status(400).json({
-        //         error: true,
-        //         code: 103,
-        //         message: "Error: É necessário informar um nome!"
-        //     })
-        // }
-        // if (!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
-        //     return res.status(400).json({
-        //         error: true,
-        //         code: 104,
-        //         message: "Error: É necessário informar um e-mail!"
-        //     })
-        // }
-
-        // if (!req.body.password || typeof req.body.password == undefined || req.body.password == null) {
-        //     return res.status(400).json({
-        //         error: true,
-        //         code: 105,
-        //         message: "Error: É necessário informar uma senha!"
-        //     })
-        // }
-
-
         var dados = req.body;
         dados.password = await bcrypt.hash(dados.password, 7)
 
@@ -77,6 +53,32 @@ class UserController {
         })
 
     }
+
+    async delete(req, res) {
+
+        const usuarioExiste = await User.findOne({ _id: req.params.id })
+
+        if (!usuarioExiste) {
+            return res.status(400).json({
+                error: true,
+                message: "Erro: Usuário não encontrado!"
+            })
+        }
+
+        const user = User.deleteOne({ _id: req.params.id }, (err) => {
+            if (err) return res.status(400).json({
+                error: true,
+                code: 122,
+                message: "Erro: Usuário não foi excluído!"
+            })
+        })
+
+        return res.json({
+            error: false,
+            message: "Usuário apagado com sucesso!"
+        })
+    }
+
 }
 
 export default new UserController

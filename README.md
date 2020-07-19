@@ -29,3 +29,6 @@ Lib validação
 criptografia da senha
 
 ### npm install --save bcrypt
+
+JWT
+### npm install --save jsonwebtoken
