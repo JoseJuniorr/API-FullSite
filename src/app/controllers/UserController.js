@@ -6,6 +6,28 @@ import User from '../models/User'
 
 
 class UserController {
+
+    async index(req, res) {
+        await User.find({}).select("-password").then((users) => {
+            res.json({
+                error: false,
+                users: users
+            })
+
+        }).catch((err) => {
+            return res.status(400).json({
+                error: true,
+                code: 106,
+                message: "Error: Não foi possível executar a ação!"
+            })
+        })
+    }
+
+
+
+
+
+
     async store(req, res) {
 
         //validação com yup
@@ -56,6 +78,8 @@ class UserController {
 
     async delete(req, res) {
 
+        // console.log(req.userId)
+
         const usuarioExiste = await User.findOne({ _id: req.params.id })
 
         if (!usuarioExiste) {
@@ -75,7 +99,7 @@ class UserController {
 
         return res.json({
             error: false,
-            message: "Usuário apagado com sucesso!"
+            message: "Usuário excluído com sucesso!"
         })
     }
 
