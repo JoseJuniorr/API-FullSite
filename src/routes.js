@@ -7,6 +7,7 @@ require("dotenv").config();
 
 import UserController from './app/controllers/UserController'
 import LoginController from './app/controllers/LoginController'
+import ProfileController from './app/controllers/ProfileController'
 
 import authMiddleware from './app/middlewares/auth'
 
@@ -16,8 +17,12 @@ const routes = new Router();
 routes.get('/users', UserController.index)
 routes.post('/users', UserController.store)
 routes.get('/users/:id', UserController.show)
-routes.put('/users', UserController.update)
+routes.put('/users', authMiddleware, UserController.update)
 routes.delete('/users/:id', authMiddleware, UserController.delete)
+
+routes.get('/profile', authMiddleware, ProfileController.show)
+routes.put('/profile', authMiddleware, ProfileController.update)
+
 
 routes.post('/login', LoginController.store)
 
