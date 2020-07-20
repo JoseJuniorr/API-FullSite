@@ -32,3 +32,7 @@ criptografia da senha
 
 JWT
 ### npm install --save jsonwebtoken
+
+Módulo para paginação com mongoose
+
+### npm install --save mongoose-paginate-v2
