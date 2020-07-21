@@ -8,6 +8,7 @@ require("dotenv").config();
 import UserController from './app/controllers/UserController'
 import LoginController from './app/controllers/LoginController'
 import ProfileController from './app/controllers/ProfileController'
+import HomeController from './app/controllers/HomeController'
 
 import authMiddleware from './app/middlewares/auth'
 
@@ -25,6 +26,9 @@ routes.put('/profile', authMiddleware, ProfileController.update)
 
 
 routes.post('/login', LoginController.store)
+
+routes.get('/home', HomeController.show)
+routes.post('/home', HomeController.store)
 
 
 
