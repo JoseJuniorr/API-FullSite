@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
-const User = new mongoose.Schema(
+const Contato = new mongoose.Schema(
   {
-    name: {
+    nome: {
       type: String,
       required: true,
     },
@@ -11,7 +11,11 @@ const User = new mongoose.Schema(
       type: String,
       required: true,
     },
-    password: {
+    assuntoMsg: {
+      type: String,
+      required: true,
+    },
+    msg: {
       type: String,
       required: true,
     },
@@ -21,6 +25,6 @@ const User = new mongoose.Schema(
   }
 );
 
-User.plugin(mongoosePaginate);
+Contato.plugin(mongoosePaginate);
 
-export default mongoose.model("user", User);
+export default mongoose.model("contato", Contato);

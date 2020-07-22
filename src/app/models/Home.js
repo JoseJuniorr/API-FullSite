@@ -1,86 +1,87 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const Home = mongoose.Schema({
+const Home = mongoose.Schema(
+  {
     //topo da página
     titleTop: {
-        type: String
+      type: String,
     },
     descTop: {
-        type: String
+      type: String,
     },
 
     titleBtnTop: {
-        type: String
+      type: String,
     },
     linkBtnTop: {
-        type: String
+      type: String,
     },
     //area de serviços
     titleServ: {
-        type: String
+      type: String,
     },
     iconOneServ: {
-        type: String
+      type: String,
     },
     iconTwoServ: {
-        type: String
+      type: String,
     },
     iconThreeServ: {
-        type: String
+      type: String,
     },
     //video
     titleVideo: {
-        type: String
+      type: String,
     },
     descTitleVideo: {
-        type: String
+      type: String,
     },
     embedVideo: {
-        type: String
+      type: String,
     },
     // area de projetos
     titleProj: {
-        type: String
+      type: String,
     },
     iconOneProj: {
-        type: String
+      type: String,
     },
     titleOneProj: {
-        type: String
+      type: String,
     },
     descOneProj: {
-        type: String
+      type: String,
     },
 
     iconTwoProj: {
-        type: String
+      type: String,
     },
     titleTwoProj: {
-        type: String
+      type: String,
     },
     descTwoProj: {
-        type: String
+      type: String,
     },
     iconTrheeProj: {
-        type: String
+      type: String,
     },
     titleTrheeProj: {
-        type: String
+      type: String,
     },
     descTrheeProj: {
-        type: String
+      type: String,
     },
     iconFourProj: {
-        type: String
+      type: String,
     },
     titleFourProj: {
-        type: String
+      type: String,
     },
     descFourProj: {
-        type: String
-    }
-}, { timestamps: true }
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
 
-)
-
-export default mongoose.model('home', Home)
+export default mongoose.model("home", Home);
