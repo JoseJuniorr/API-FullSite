@@ -1,4 +1,5 @@
 import InfoContato from '../models/InfoContato'
+import Footer from '../models/Footer'
 import * as Yup from 'yup'
 
 
@@ -8,15 +9,26 @@ class InfoContatoController {
 
     async show(req, res) {
         InfoContato.findOne({}).then((infoContato) => {
-            return res.json({
-                error: false,
-                infoContato: infoContato
+            Footer.findOne({}).then((footer) => {
+                return res.json({
+                    error: false,
+                    infoContato: infoContato,
+                    footer: footer
+                })
+
+            }).catch((err) => {
+                return res.status(400).json({
+                    error: true,
+                    code: 123,
+                    message: "Erro: Não foi possível executar a solicitação!"
+                })
+
             })
         }).catch((err) => {
             return res.status(400).json({
                 error: true,
-                message: "Erro: Não fois possível executar a solicitação!"
-
+                code: 131,
+                message: "Erro: Não foi possível executar a solicitação!"
             })
         })
     }
