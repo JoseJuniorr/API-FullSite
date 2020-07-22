@@ -12,6 +12,8 @@ import HomeController from './app/controllers/HomeController'
 
 import authMiddleware from './app/middlewares/auth'
 import FooterController from "./app/controllers/FooterController";
+import AboutController from './app/controllers/AboutController'
+import InfoContatoController from "./app/controllers/InfoContatoController";
 
 
 const routes = new Router();
@@ -38,6 +40,16 @@ routes.put('/home', authMiddleware, HomeController.update)
 routes.get('/footer', FooterController.show)
 routes.post('/footer', authMiddleware, FooterController.store)
 routes.put('/footer', authMiddleware, FooterController.update)
+
+//página sobre
+routes.get('/about', AboutController.show)
+routes.post('/about', authMiddleware, AboutController.store)
+routes.put('/about', authMiddleware, AboutController.update)
+
+//página contato
+routes.get('/infocontato', InfoContatoController.show)
+routes.post('/infocontato', authMiddleware, InfoContatoController.store)
+routes.put('/infocontato', authMiddleware, InfoContatoController.update)
 
 
 
