@@ -5,12 +5,12 @@ class ContatoController {
 
   //listar contatos
   async index(req, res) {
-    
+
     const { page = 1 } = req.query;
     const { limit = 40 } = req.query;
     //console.log(page)
 
-    await Contato.paginate({}, { select: "_id name email assuntoMsg msg", page: 1, limit })
+    await Contato.paginate({}, { select: "_id name email assuntoMsg msg createdAt updatedAt", page: 1, limit })
       .then((contato) => {
         res.json({
           error: false,

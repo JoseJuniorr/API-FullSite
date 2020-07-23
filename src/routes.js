@@ -2,6 +2,9 @@
 import { Router } from "express";
 import mongoose from "mongoose";
 
+import multer from 'multer';
+import multerUpImgSobre from './app/middlewares/uploadImgSobre';
+
 require("dotenv").config();
 
 import UserController from "./app/controllers/UserController";
@@ -14,8 +17,11 @@ import FooterController from "./app/controllers/FooterController";
 import AboutController from "./app/controllers/AboutController";
 import InfoContatoController from "./app/controllers/InfoContatoController";
 import ContatoController from "./app/controllers/ContatoController";
+import SobreImgController from "./app/controllers/SobreImgController";
 
 const routes = new Router();
+//upload
+const uploadImgSobre = multer(multerUpImgSobre);
 
 routes.get("/users", UserController.index);
 routes.post("/users", UserController.store);
@@ -56,5 +62,10 @@ routes.post("/contato", ContatoController.store);
 routes.put("/contato", authMiddleware, ContatoController.update);
 routes.delete("/contato/:id", authMiddleware, ContatoController.delete);
 
+//upload
+routes.put('/sobre-imagem', uploadImgSobre.single('file')  ,authMiddleware, SobreImgController.update);
+
+
 // module.exports = routes
 export default routes;
+

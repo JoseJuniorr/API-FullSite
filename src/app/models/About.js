@@ -14,6 +14,12 @@ const About = new mongoose.Schema(
       type: String,
       required: true,
     },
+    originalName: {
+      type: String
+    },
+    fileName: {
+      type: String
+    }
   },
   {
     timestamps: true,

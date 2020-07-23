@@ -31,8 +31,16 @@ criptografia da senha
 ### npm install --save bcrypt
 
 JWT
+
 ### npm install --save jsonwebtoken
 
 Módulo para paginação com mongoose
 
 ### npm install --save mongoose-paginate-v2
+
+Multer é um middleware node js para manipilação multipart/form-data, usado para o upload
+
+### npm install --save multer
+
+Permitir requisição para API
+### npm install cors

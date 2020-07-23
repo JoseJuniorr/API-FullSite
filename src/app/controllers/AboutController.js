@@ -1,16 +1,21 @@
 import About from "../models/About";
 import Footer from "../models/Footer";
 import * as Yup from "yup";
+import config from '../../config/config'
 
 class AboutController {
   async show(req, res) {
     About.findOne({})
       .then((about) => {
+        // var url = "http://localhost:3333/tmp/uploads/sobre" + about.fileName;
+        var url = config.url + "/files/sobre/" + about.fileName;
+
         Footer.findOne({})
           .then((footer) => {
             return res.json({
               error: false,
               about: about,
+              url: url,
               footer: footer,
             });
           })

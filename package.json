@@ -1,7 +1,7 @@
 {
   "name": "backend-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto backend do site IT de estudos utilizando next",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
@@ -12,11 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.25",
     "mongoose-paginate-v2": "^1.3.9",
+    "multer": "^1.4.2",
     "yup": "^0.29.1"
   },
   "devDependencies": {
